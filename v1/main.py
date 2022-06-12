@@ -4,6 +4,9 @@ import config, algorithm
 
 client = tweepy.Client(config.token, config.api_key, config.api_secret, config.access_token, config.access_token_secret)
 
+# Created by Henrique: github.com/henriquelmeeee // 2022
+
+# The code below retweets Linux-related tweets and uses the algorithm located in "algorithm.py" for checking.
 
 def retweet(tweetid : int):
     try:
@@ -23,11 +26,14 @@ class MyStream(tweepy.StreamingClient):
 
     def on_tweet(self, tweet):
         try:
-            if algorithm.check(tweet.text) and tweet.referenced_tweets is None and retweet(tweet.id):
-                print(f'{datetime.now()} | Tweet de ID {tweet.id} retweetado com sucesso!')
-                if int(datetime.now().hour) > 7 and not int(datetime.now().hour) < 21:
-                    time.sleep(random.randint(20, 50))
-                time.sleep(random.randint(10, 30))
+            if '#mundolinux' in tweet.text and ' ' in tweet.text:
+                retweet(tweet.id)
+            else:
+                if algorithm.check(tweet.text) and tweet.referenced_tweets is None and retweet(tweet.id):
+                    print(f'{datetime.now()} | Tweet de ID {tweet.id} retweetado com sucesso!')
+                    if int(datetime.now().hour) > 7 and not int(datetime.now().hour) < 21:
+                        time.sleep(random.randint(10, 20))
+            time.sleep(random.randint(20, 60))
         except Exception as error:
             print('--------------------' + str(error) + '--------------------')
 
