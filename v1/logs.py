@@ -8,7 +8,7 @@ year = int(datetime.now().year)
 
 def send_log():
     f = open('logs.txt', 'a')
-    f.write(f'Dia {day}/{month}/{year}: ' + str(config.retweeted_today))
+    f.write(f'Dia {day}/{month}/{year}: ' + str(config.retweeted_today) + '\n')
     f.close
     config.retweeted_today = 0
     print(f'{datetime.now()} | Logs do dia {day} registradas com sucesso!')
