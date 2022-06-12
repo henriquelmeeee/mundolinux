@@ -1,5 +1,10 @@
 import config
 
+# Created by Henrique: github.com/henriquelmeeee // 2022
+
+# The algorithm below checks if the tweet is actually referring to Linux and tries to filter out only tweets that 
+# really favor something, as many just tag Linux in a tweet that has nothing to do with it.
+
 def is_alphanum(text : str):
     letters = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
@@ -9,6 +14,11 @@ def is_alphanum(text : str):
         if not letter in letters:
             return False
     return True
+
+def remove_word_list_filter(text):
+    for word in config.words:
+        text = text.replace(word, '')
+    return text
 
 def check_stage_three(text):
     if text == 'linux' or text == 'xfce' or text == 'gnome' or text == 'mundolinux':
@@ -29,10 +39,14 @@ def check_stage_three(text):
     return True 
 
 def check_stage_two(text):
+    pass_to_stage_three = False
+    for letter in remove_word_list_filter(text):
+        if is_alphanum(letter):
+            pass_to_stage_three = True
     for letter in text:
         if letter in config.words_not_accepted:
             return False
-    return True
+    return True if pass_to_stage_three else False
 
 def check_stage_one(text):
     hashtag_number = 0
@@ -57,3 +71,8 @@ def check(text : str):
         return True
     return False
 
+def test_algorithm():
+    while True:
+        text = input('Text: ')
+        print('Result: ' + str(check(str(text))))
+test_algorithm()
