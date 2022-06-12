@@ -15,6 +15,8 @@ def check_stage_three(text):
         return False # remove tweets very simple because even involving linux, they do not contribute anything
     if not ' ' in text:
         return False # it will probably be a link
+    if "tag" in text or "tags" in text:
+        return False # probably the word linux is just a tag
     word = ''
     for letter in text: # sometimes some tweets get passed to the bot even though it's not in the word list, so this script will check that
         if letter == ' ':
@@ -54,3 +56,4 @@ def check(text : str):
     if check_stage_one(text) and check_stage_two(text) and check_stage_three(text):
         return True
     return False
+
