@@ -29,7 +29,6 @@ def retweet(tweetid : int):
 class MyStream(tweepy.StreamingClient):
 
     def on_connect(self):
-        print(stream.get_rules())
         print(
             f"--------------------\nBot iniciado com sucesso!\n--------------------"
         )
