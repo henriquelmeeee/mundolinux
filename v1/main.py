@@ -25,7 +25,6 @@ class MyStream(tweepy.StreamingClient):
         try:
             if algorithm.check(tweet.text) and tweet.referenced_tweets is None and retweet(tweet.id):
                 print(f'{datetime.now()} | Tweet de ID {tweet.id} retweetado com sucesso!')
-                print(int(datetime.now().hour))
                 if int(datetime.now().hour) > 7 and not int(datetime.now().hour) < 21:
                     time.sleep(random.randint(20, 50))
                 time.sleep(random.randint(10, 30))
