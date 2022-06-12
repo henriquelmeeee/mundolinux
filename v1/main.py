@@ -27,7 +27,7 @@ class MyStream(tweepy.StreamingClient):
                 print(int(datetime.now().hour))
                 if int(datetime.now().hour) > 7 and not int(datetime.now().hour) < 21:
                     time.sleep(random.randint(20, 50))
-                time.sleep(10, 30)
+                time.sleep(random.randint(10, 30))
         except Exception as error:
             print('--------------------' + str(error) + '--------------------')
 
