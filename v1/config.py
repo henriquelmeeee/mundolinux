@@ -6,10 +6,9 @@ words = [
     'mundolinux',
     'linux',
     'xfce',
-    'gnome',
     'wsl2',
-    'wsl',
     'unix',
+    'ubuntu'
 ]
 
 words_not_accepted = [ #remove specific words and letters to filter with the best result, especially in Portuguese
