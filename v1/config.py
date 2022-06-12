@@ -1,14 +1,14 @@
 token = "" # bearer_token
 
+retweeted_today = 0
+
 words = [
     '#mundolinux',
     'linux',
     'mundolinux',
-    'linux',
+    '@mundolinuxbot',
     'xfce',
-    'ubuntu',
-    'ubuntu-server',
-    'linux-server'
+    'ubuntu'
 ]
 
 words_not_accepted = [ #remove specific words and letters to filter with the best result, especially in Portuguese
