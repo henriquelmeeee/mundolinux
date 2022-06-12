@@ -15,11 +15,6 @@ def is_alphanum(text : str):
             return False
     return True
 
-def remove_word_list_filter(text):
-    for word in config.words:
-        text = text.replace(word, '')
-    return text
-
 def check_stage_three(text):
     if text == 'linux' or text == 'xfce' or text == 'gnome' or text == 'mundolinux':
         return False # remove tweets very simple because even involving linux, they do not contribute anything
@@ -36,17 +31,13 @@ def check_stage_three(text):
                 word = ''
         else:
             word += letter
-    return True 
+    return True if word in config.words else False
 
 def check_stage_two(text):
-    pass_to_stage_three = False
-    for letter in remove_word_list_filter(text):
-        if is_alphanum(letter):
-            pass_to_stage_three = True
     for letter in text:
         if letter in config.words_not_accepted:
             return False
-    return True if pass_to_stage_three else False
+    return True
 
 def check_stage_one(text):
     hashtag_number = 0
@@ -63,7 +54,6 @@ def check_stage_one(text):
     if hashtag_number > 3:
         return False
     return True if not word.replace(' ', '') in config.words_not_accepted else False
-
 
 def check(text : str):
     text = text.lower()
