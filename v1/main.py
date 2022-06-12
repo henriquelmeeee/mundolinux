@@ -47,7 +47,7 @@ if add_rules:
     except Exception as erro:
         print(f"Um erro ocorreu!\n'{str(erro)}'\nO bot irá continuar a funcionar mesmo assim.")
 
-    os.system('clear && rm -rf __pycache__ && echo "Iniciando bot..."')
+os.system('clear && rm -rf __pycache__ && echo "Iniciando bot..."')
 
 auth = tweepy.OAuthHandler(config.api_key, config.api_secret)
 auth.set_access_token(config.access_token, config.access_token_secret)
