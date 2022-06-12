@@ -75,4 +75,3 @@ def test_algorithm():
     while True:
         text = input('Text: ')
         print('Result: ' + str(check(str(text))))
-test_algorithm()
