@@ -60,7 +60,7 @@ print('Iniciando logs...')
 os.system('rm -rf __pycache__ && echo "Iniciando bot..."')
 
 log = threading.Thread(name='logs', target=logs.logs)
-log.start() # Start logs system in background because because it will be running in loop
+log.start() # Start logs system in background because it will be running in loop
 
 auth = tweepy.OAuthHandler(config.api_key, config.api_secret)
 auth.set_access_token(config.access_token, config.access_token_secret)
