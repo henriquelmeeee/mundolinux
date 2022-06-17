@@ -8,7 +8,8 @@ year = int(datetime.now().year)
 hour = int(datetime.now().hour)
 
 def update_variables():
-    day = int(datetime.now().day); month = int(datetime.now().month); year = int(datetime.now().year); hour = int(datetime.now().hour)
+    day = int(datetime.now().day); month = int(datetime.now().month)
+    year = int(datetime.now().year); hour = int(datetime.now().hour)
     return True
 
 def send_log():
@@ -23,10 +24,10 @@ def send_log():
 def logs():
     print('Sistema de logs iniciado')
     if hour == 0:
-        time.sleep(3600)
+        time.sleep(4000)
     while True:
         if int(datetime.now().hour) == 0:
             print(f'{datetime.now()} | Registrando logs do dia {day}...')
             send_log()
-            time.sleep(3600)
+            time.sleep(4000)
         time.sleep(15)
