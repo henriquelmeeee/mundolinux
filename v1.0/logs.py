@@ -8,6 +8,7 @@ year = int(datetime.now().year)
 hour = int(datetime.now().hour)
 
 def update_variables():
+    global day, month, year, hour
     day = int(datetime.now().day); month = int(datetime.now().month)
     year = int(datetime.now().year); hour = int(datetime.now().hour)
     return True
