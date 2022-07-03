@@ -12,6 +12,15 @@ words = [
 ]
 
 words_not_accepted = [ #remove specific words and letters to filter with the best result, especially in Portuguese
+    'sexy',
+    'sex',
+    'porn',
+    'porno',
+    'pornô',
+    'naked',
+    'nude',
+    'nudes',
+    'game',
     '&',
     'к',
     'ь',
@@ -38,7 +47,13 @@ words_not_accepted = [ #remove specific words and letters to filter with the bes
     'を',
     'ー',
     'न',
-    'ज'
+    'ज',
+    'ä',
+    'ü',
+    'ö',
+    'ğ',
+    'ş',
+    'ر'
 ]
 
 api_key = ''
