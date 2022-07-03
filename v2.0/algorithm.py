@@ -30,10 +30,11 @@ def check_stage_three(text, is_replie):
             word = ''
         else:
             word += letter
-    if is_replie and words == 1 and last_word.lower() == 'linux':
+    if is_replie and words == 1 and last_word == 'linux':
         return False
-    if words == 1 and last_word.lower() == '@mundolinuxbot':
-        return False
+    if words == 1:
+        if last_word == '@mundolinuxbot' or last_word == 'ubuntu':
+            return False
     word = ''
     for letter in text: # sometimes some tweets get passed to the bot even though it's not in the word list, so this script will check that
         if letter == ' ':
