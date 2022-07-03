@@ -27,15 +27,14 @@ class MyStream(tweepy.StreamingClient):
 
     def on_tweet(self, tweet):
         try:
-            if '#mundolinux' in tweet.text or '@mundolinuxbot' in tweet.text and ' ' in tweet.text:
+            if '#mundolinux' in tweet.text and ' ' in tweet.text or '@mundolinuxbot' in tweet.text and ' ' in tweet.text:
                 retweet(tweet.id)
             else:
+                now = datetime.now()
                 if algorithm.check(tweet.text, is_replie=False if tweet.referenced_tweets is None else True) and retweet(tweet.id):
-                    print(f'{datetime.now()} | Tweet de ID {tweet.id} retweetado com sucesso!')
-                    if int(datetime.now().hour) > 7 and not int(datetime.now().hour) < 21:
-                        time.sleep(random.randint(25, 40))
+                    print(f'{now} | Tweet de ID {tweet.id} retweetado com sucesso!')
                     config.retweeted_today += 1
-                    time.sleep(random.randint(30, 80))
+                    time.sleep(random.randint(50, 100))
         except Exception as error:
             print('--------------------' + str(error) + '--------------------')
 
